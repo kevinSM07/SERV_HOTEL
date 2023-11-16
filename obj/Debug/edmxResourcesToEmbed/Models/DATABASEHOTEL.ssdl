@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DATABASEHOTELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CANCELACIONES">
+    <Key>
+      <PropertyRef Name="ID_CANCELACION" />
+    </Key>
+    <Property Name="ID_CANCELACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="CIUDADES">
+    <Key>
+      <PropertyRef Name="CIUDAD_ID" />
+    </Key>
+    <Property Name="CIUDAD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_CIUDAD" Type="varchar" MaxLength="50" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="50" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="100" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_TIPO_CLIENTE" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="EVENTOS">
+    <Key>
+      <PropertyRef Name="ID_EVENTO" />
+    </Key>
+    <Property Name="ID_EVENTO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE_EVENTO" Type="varchar" MaxLength="100" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="LUGAR" Type="varchar" MaxLength="100" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="FACTURA">
+    <Key>
+      <PropertyRef Name="ID_FACTURA" />
+    </Key>
+    <Property Name="ID_FACTURA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_RESERVA" Type="int" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="NUMERO_HABITACION" Type="int" />
+    <Property Name="ID_CLIENTE" Type="int" />
+    <Property Name="ID_MODO_PAGO" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="FACTURA_SERVICIOS">
+    <Key>
+      <PropertyRef Name="ID_FACTURA_SERVICIOS" />
+    </Key>
+    <Property Name="ID_FACTURA_SERVICIOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_FACTURA" Type="int" />
+    <Property Name="ID_SERVICIO" Type="int" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="HABITACIONES">
+    <Key>
+      <PropertyRef Name="NUMERO_HABITACION" />
+    </Key>
+    <Property Name="NUMERO_HABITACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_HABITACION" Type="int" />
+    <Property Name="TARIFA_NOCHE" Type="float" />
+    <Property Name="DISPONIBILIDAD" Type="bit" />
+    <Property Name="ID_SERVICIOS_ADICIONALES" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="MODO_PAGO">
+    <Key>
+      <PropertyRef Name="ID_MODO_PAGO" />
+    </Key>
+    <Property Name="ID_MODO_PAGO" Type="int" Nullable="false" />
+    <Property Name="METODO_PAGO" Type="varchar" MaxLength="30" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="PERSONAL">
+    <Key>
+      <PropertyRef Name="ID_PERSONAL" />
+    </Key>
+    <Property Name="ID_PERSONAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="varchar" MaxLength="20" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="50" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="100" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="REGISTRO_ENTRADA_SALIDA">
+    <Key>
+      <PropertyRef Name="ID_ENTRADA_SALIDA" />
+    </Key>
+    <Property Name="ID_ENTRADA_SALIDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA_HORA_ENTRADA" Type="datetime" />
+    <Property Name="FECHA_HORA_SALIDA" Type="datetime" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="RESERVAS">
+    <Key>
+      <PropertyRef Name="ID_RESERVA" />
+    </Key>
+    <Property Name="ID_RESERVA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CLIENTE" Type="int" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="20" />
+    <Property Name="ID_SEDE" Type="int" />
+    <Property Name="NUMERO_HABITACION" Type="int" />
+    <Property Name="ID_SERVICIO" Type="int" />
+    <Property Name="ID_CANCELACION" Type="int" />
+    <Property Name="ID_EVENTO" Type="int" />
+    <Property Name="FECHA_ENTRADA" Type="date" />
+    <Property Name="FECHA_SALIDA" Type="date" />
+    <Property Name="ID_ENTRADA_SALIDA" Type="int" />
+    <Property Name="PRECIO_RESERVA" Type="float" />
+    <Property Name="ESTADO_RESERVA" Type="bit" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="int" Nullable="false" />
+    <Property Name="NOMBRE_ROL" Type="varchar" MaxLength="50" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="ROLES_POR_PERSONAL">
+    <Key>
+      <PropertyRef Name="ID_REGISTRO" />
+    </Key>
+    <Property Name="ID_REGISTRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PERSONAL" Type="int" />
+    <Property Name="ID_ROL" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="SEDES">
+    <Key>
+      <PropertyRef Name="ID_SEDE" />
+    </Key>
+    <Property Name="ID_SEDE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_SEDE" Type="varchar" MaxLength="100" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="100" />
+    <Property Name="CIUDAD_ID" Type="int" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="SERVICIOS">
+    <Key>
+      <PropertyRef Name="ID_SERVICIO" />
+    </Key>
+    <Property Name="ID_SERVICIO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE_SERVICIO" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+    <Property Name="PRECIO" Type="float" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="TIPO_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_TIPO_CLIENTE" />
+    </Key>
+    <Property Name="ID_TIPO_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <EntityType Name="TIPO_HABITACION">
+    <Key>
+      <PropertyRef Name="ID_TIPO_HABITACION" />
+    </Key>
+    <Property Name="ID_TIPO_HABITACION" Type="int" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+    <Property Name="ACTIVO" Type="bit" />
+  </EntityType>
+  <Association Name="FK__CLIENTES__ACTIVO__398D8EEE">
+    <End Role="TIPO_CLIENTE" Type="Self.TIPO_CLIENTE" Multiplicity="0..1" />
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CLIENTE">
+        <PropertyRef Name="ID_TIPO_CLIENTE" />
+      </Principal>
+      <Dependent Role="CLIENTES">
+        <PropertyRef Name="ID_TIPO_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA__ACTIVO__619B8048">
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="0..1" />
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVAS">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA__ID_CLIE__6477ECF3">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA__ID_MODO__656C112C">
+    <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="0..1" />
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODO_PAGO">
+        <PropertyRef Name="ID_MODO_PAGO" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="ID_MODO_PAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA__ID_SEDE__628FA481">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="0..1" />
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA__NUMERO___6383C8BA">
+    <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HABITACIONES">
+        <PropertyRef Name="NUMERO_HABITACION" />
+      </Principal>
+      <Dependent Role="FACTURA">
+        <PropertyRef Name="NUMERO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_S__ACTIV__68487DD7">
+    <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="0..1" />
+    <End Role="FACTURA_SERVICIOS" Type="Self.FACTURA_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACTURA">
+        <PropertyRef Name="ID_FACTURA" />
+      </Principal>
+      <Dependent Role="FACTURA_SERVICIOS">
+        <PropertyRef Name="ID_FACTURA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_S__ID_SE__693CA210">
+    <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+    <End Role="FACTURA_SERVICIOS" Type="Self.FACTURA_SERVICIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICIOS">
+        <PropertyRef Name="ID_SERVICIO" />
+      </Principal>
+      <Dependent Role="FACTURA_SERVICIOS">
+        <PropertyRef Name="ID_SERVICIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HABITACIO__ACTIV__403A8C7D">
+    <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+    <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICIOS">
+        <PropertyRef Name="ID_SERVICIO" />
+      </Principal>
+      <Dependent Role="HABITACIONES">
+        <PropertyRef Name="ID_SERVICIOS_ADICIONALES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HABITACIO__ID_TI__412EB0B6">
+    <End Role="TIPO_HABITACION" Type="Self.TIPO_HABITACION" Multiplicity="0..1" />
+    <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_HABITACION">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Principal>
+      <Dependent Role="HABITACIONES">
+        <PropertyRef Name="ID_TIPO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PERSONAL__ACTIVO__4AB81AF0">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="0..1" />
+    <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="PERSONAL">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ESTADO__571DF1D5">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ID_CAN__5BE2A6F2">
+    <End Role="CANCELACIONES" Type="Self.CANCELACIONES" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANCELACIONES">
+        <PropertyRef Name="ID_CANCELACION" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_CANCELACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ID_ENT__59FA5E80">
+    <End Role="REGISTRO_ENTRADA_SALIDA" Type="Self.REGISTRO_ENTRADA_SALIDA" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REGISTRO_ENTRADA_SALIDA">
+        <PropertyRef Name="ID_ENTRADA_SALIDA" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_ENTRADA_SALIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ID_EVE__5CD6CB2B">
+    <End Role="EVENTOS" Type="Self.EVENTOS" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTOS">
+        <PropertyRef Name="ID_EVENTO" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_EVENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ID_SED__5812160E">
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEDES">
+        <PropertyRef Name="ID_SEDE" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__ID_SER__5AEE82B9">
+    <End Role="SERVICIOS" Type="Self.SERVICIOS" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICIOS">
+        <PropertyRef Name="ID_SERVICIO" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="ID_SERVICIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RESERVAS__NUMERO__59063A47">
+    <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
+    <End Role="RESERVAS" Type="Self.RESERVAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HABITACIONES">
+        <PropertyRef Name="NUMERO_HABITACION" />
+      </Principal>
+      <Dependent Role="RESERVAS">
+        <PropertyRef Name="NUMERO_HABITACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROLES_POR__ACTIV__4D94879B">
+    <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="0..1" />
+    <End Role="ROLES_POR_PERSONAL" Type="Self.ROLES_POR_PERSONAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONAL">
+        <PropertyRef Name="ID_PERSONAL" />
+      </Principal>
+      <Dependent Role="ROLES_POR_PERSONAL">
+        <PropertyRef Name="ID_PERSONAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROLES_POR__ID_RO__4E88ABD4">
+    <End Role="ROLES" Type="Self.ROLES" Multiplicity="0..1" />
+    <End Role="ROLES_POR_PERSONAL" Type="Self.ROLES_POR_PERSONAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="ROLES_POR_PERSONAL">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SEDES__ACTIVO__47DBAE45">
+    <End Role="CIUDADES" Type="Self.CIUDADES" Multiplicity="0..1" />
+    <End Role="SEDES" Type="Self.SEDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDADES">
+        <PropertyRef Name="CIUDAD_ID" />
+      </Principal>
+      <Dependent Role="SEDES">
+        <PropertyRef Name="CIUDAD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DATABASEHOTELModelStoreContainer">
+    <EntitySet Name="CANCELACIONES" EntityType="Self.CANCELACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CIUDADES" EntityType="Self.CIUDADES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVENTOS" EntityType="Self.EVENTOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACTURA" EntityType="Self.FACTURA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACTURA_SERVICIOS" EntityType="Self.FACTURA_SERVICIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HABITACIONES" EntityType="Self.HABITACIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODO_PAGO" EntityType="Self.MODO_PAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERSONAL" EntityType="Self.PERSONAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REGISTRO_ENTRADA_SALIDA" EntityType="Self.REGISTRO_ENTRADA_SALIDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESERVAS" EntityType="Self.RESERVAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLES_POR_PERSONAL" EntityType="Self.ROLES_POR_PERSONAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEDES" EntityType="Self.SEDES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERVICIOS" EntityType="Self.SERVICIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_CLIENTE" EntityType="Self.TIPO_CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_HABITACION" EntityType="Self.TIPO_HABITACION" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CLIENTES__ACTIVO__398D8EEE" Association="Self.FK__CLIENTES__ACTIVO__398D8EEE">
+      <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA__ACTIVO__619B8048" Association="Self.FK__FACTURA__ACTIVO__619B8048">
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA__ID_CLIE__6477ECF3" Association="Self.FK__FACTURA__ID_CLIE__6477ECF3">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA__ID_MODO__656C112C" Association="Self.FK__FACTURA__ID_MODO__656C112C">
+      <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA__ID_SEDE__628FA481" Association="Self.FK__FACTURA__ID_SEDE__628FA481">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA__NUMERO___6383C8BA" Association="Self.FK__FACTURA__NUMERO___6383C8BA">
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+      <End Role="FACTURA" EntitySet="FACTURA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_S__ACTIV__68487DD7" Association="Self.FK__FACTURA_S__ACTIV__68487DD7">
+      <End Role="FACTURA" EntitySet="FACTURA" />
+      <End Role="FACTURA_SERVICIOS" EntitySet="FACTURA_SERVICIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_S__ID_SE__693CA210" Association="Self.FK__FACTURA_S__ID_SE__693CA210">
+      <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+      <End Role="FACTURA_SERVICIOS" EntitySet="FACTURA_SERVICIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HABITACIO__ACTIV__403A8C7D" Association="Self.FK__HABITACIO__ACTIV__403A8C7D">
+      <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HABITACIO__ID_TI__412EB0B6" Association="Self.FK__HABITACIO__ID_TI__412EB0B6">
+      <End Role="TIPO_HABITACION" EntitySet="TIPO_HABITACION" />
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PERSONAL__ACTIVO__4AB81AF0" Association="Self.FK__PERSONAL__ACTIVO__4AB81AF0">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="PERSONAL" EntitySet="PERSONAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ESTADO__571DF1D5" Association="Self.FK__RESERVAS__ESTADO__571DF1D5">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ID_CAN__5BE2A6F2" Association="Self.FK__RESERVAS__ID_CAN__5BE2A6F2">
+      <End Role="CANCELACIONES" EntitySet="CANCELACIONES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ID_ENT__59FA5E80" Association="Self.FK__RESERVAS__ID_ENT__59FA5E80">
+      <End Role="REGISTRO_ENTRADA_SALIDA" EntitySet="REGISTRO_ENTRADA_SALIDA" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ID_EVE__5CD6CB2B" Association="Self.FK__RESERVAS__ID_EVE__5CD6CB2B">
+      <End Role="EVENTOS" EntitySet="EVENTOS" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ID_SED__5812160E" Association="Self.FK__RESERVAS__ID_SED__5812160E">
+      <End Role="SEDES" EntitySet="SEDES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__ID_SER__5AEE82B9" Association="Self.FK__RESERVAS__ID_SER__5AEE82B9">
+      <End Role="SERVICIOS" EntitySet="SERVICIOS" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RESERVAS__NUMERO__59063A47" Association="Self.FK__RESERVAS__NUMERO__59063A47">
+      <End Role="HABITACIONES" EntitySet="HABITACIONES" />
+      <End Role="RESERVAS" EntitySet="RESERVAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROLES_POR__ACTIV__4D94879B" Association="Self.FK__ROLES_POR__ACTIV__4D94879B">
+      <End Role="PERSONAL" EntitySet="PERSONAL" />
+      <End Role="ROLES_POR_PERSONAL" EntitySet="ROLES_POR_PERSONAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROLES_POR__ID_RO__4E88ABD4" Association="Self.FK__ROLES_POR__ID_RO__4E88ABD4">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="ROLES_POR_PERSONAL" EntitySet="ROLES_POR_PERSONAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SEDES__ACTIVO__47DBAE45" Association="Self.FK__SEDES__ACTIVO__47DBAE45">
+      <End Role="CIUDADES" EntitySet="CIUDADES" />
+      <End Role="SEDES" EntitySet="SEDES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

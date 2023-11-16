@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f62fc9965e324a3b8897d4a5b6838be3" Name="Diagram1">
+        <EntityTypeShape EntityType="DBHOTELModel.CANCELACIONE" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.CIUDADE" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.CLIENTE" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.DETALLE_FACTURA" Width="1.5" PointX="12" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.EVENTO" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.FACTURA" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.HABITACIONE" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.HABITACIONES_SERVICIOS" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.MODO_PAGO" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.PERSONAL" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.REGISTRO_ENTRADA_SALIDA" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.RESERVA" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.ROLE" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.ROLES_POR_PERSONAL" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.SEDE" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.SERVICIO" Width="1.5" PointX="5.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.TIPO_CLIENTE" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBHOTELModel.TIPO_HABITACION" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ID_CAN__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__SEDES__ACTIVO__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__CLIENTES__ACTIVO__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__FACTURA__ID_CLIE__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ESTADO__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__DETALLE_F__ACTIV__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__DETALLE_F__NUMER__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__EVENTOS__ACTIVO__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ID_EVE__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__FACTURA__ACTIVO__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__FACTURA__ID_MODO__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__FACTURA__ID_SEDE__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__HABITACIO__ACTIV__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__HABITACIO__ID_TI__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__NUMERO__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__PERSONAL__ACTIVO__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__ROLES_POR__ACTIV__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ID_ENT__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ID_SED__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__RESERVAS__ID_SER__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="DBHOTELModel.FK__ROLES_POR__ID_RO__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

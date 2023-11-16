@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBHOTEL2Model2StoreContainer" CdmEntityContainer="DBHOTEL2Entities4">
+    <EntitySetMapping Name="CANCELACIONES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.CANCELACIONE">
+        <MappingFragment StoreEntitySet="CANCELACIONES">
+          <ScalarProperty Name="ID_CANCELACION" ColumnName="ID_CANCELACION" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIUDADES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.CIUDADE">
+        <MappingFragment StoreEntitySet="CIUDADES">
+          <ScalarProperty Name="CIUDAD_ID" ColumnName="CIUDAD_ID" />
+          <ScalarProperty Name="NOMBRE_CIUDAD" ColumnName="NOMBRE_CIUDAD" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+          <ScalarProperty Name="ID_TIPO_CLIENTE" ColumnName="ID_TIPO_CLIENTE" />
+          <ScalarProperty Name="CHECK_IN" ColumnName="CHECK_IN" />
+          <ScalarProperty Name="CHECK_OUT" ColumnName="CHECK_OUT" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVENTOS">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.EVENTO">
+        <MappingFragment StoreEntitySet="EVENTOS">
+          <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+          <ScalarProperty Name="NOMBRE_EVENTO" ColumnName="NOMBRE_EVENTO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="LUGAR" ColumnName="LUGAR" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURAs">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.FACTURA">
+        <MappingFragment StoreEntitySet="FACTURA">
+          <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+          <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="NUMERO_HABITACION" ColumnName="NUMERO_HABITACION" />
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="ID_MODO_PAGO" ColumnName="ID_MODO_PAGO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURA_SERVICIOS">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.FACTURA_SERVICIOS">
+        <MappingFragment StoreEntitySet="FACTURA_SERVICIOS">
+          <ScalarProperty Name="ID_FACTURA_SERVICIOS" ColumnName="ID_FACTURA_SERVICIOS" />
+          <ScalarProperty Name="ID_FACTURA" ColumnName="ID_FACTURA" />
+          <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HABITACIONES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.HABITACIONE">
+        <MappingFragment StoreEntitySet="HABITACIONES">
+          <ScalarProperty Name="NUMERO_HABITACION" ColumnName="NUMERO_HABITACION" />
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="TARIFA_NOCHE" ColumnName="TARIFA_NOCHE" />
+          <ScalarProperty Name="DISPONIBILIDAD" ColumnName="DISPONIBILIDAD" />
+          <ScalarProperty Name="ID_SERVICIOS_ADICIONALES" ColumnName="ID_SERVICIOS_ADICIONALES" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HABITACIONES_SERVICIOS">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.HABITACIONES_SERVICIOS">
+        <MappingFragment StoreEntitySet="HABITACIONES_SERVICIOS">
+          <ScalarProperty Name="ID_HABITACIONES_SERVICIOS" ColumnName="ID_HABITACIONES_SERVICIOS" />
+          <ScalarProperty Name="NUMERO_HABITACION" ColumnName="NUMERO_HABITACION" />
+          <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODO_PAGO">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.MODO_PAGO">
+        <MappingFragment StoreEntitySet="MODO_PAGO">
+          <ScalarProperty Name="ID_MODO_PAGO" ColumnName="ID_MODO_PAGO" />
+          <ScalarProperty Name="METODO_PAGO" ColumnName="METODO_PAGO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONALs">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.PERSONAL">
+        <MappingFragment StoreEntitySet="PERSONAL">
+          <ScalarProperty Name="ID_PERSONAL" ColumnName="ID_PERSONAL" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REGISTRO_ENTRADA_SALIDA">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.REGISTRO_ENTRADA_SALIDA">
+        <MappingFragment StoreEntitySet="REGISTRO_ENTRADA_SALIDA">
+          <ScalarProperty Name="ID_ENTRADA_SALIDA" ColumnName="ID_ENTRADA_SALIDA" />
+          <ScalarProperty Name="FECHA_HORA_ENTRADA" ColumnName="FECHA_HORA_ENTRADA" />
+          <ScalarProperty Name="FECHA_HORA_SALIDA" ColumnName="FECHA_HORA_SALIDA" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVAS">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.RESERVA">
+        <MappingFragment StoreEntitySet="RESERVAS">
+          <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="NUMERO_HABITACION" ColumnName="NUMERO_HABITACION" />
+          <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+          <ScalarProperty Name="ID_CANCELACION" ColumnName="ID_CANCELACION" />
+          <ScalarProperty Name="ID_EVENTO" ColumnName="ID_EVENTO" />
+          <ScalarProperty Name="FECHA_ENTRADA" ColumnName="FECHA_ENTRADA" />
+          <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+          <ScalarProperty Name="ID_ENTRADA_SALIDA" ColumnName="ID_ENTRADA_SALIDA" />
+          <ScalarProperty Name="PRECIO_RESERVA" ColumnName="PRECIO_RESERVA" />
+          <ScalarProperty Name="ESTADO_RESERVA" ColumnName="ESTADO_RESERVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.ROLE">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="NOMBRE_ROL" ColumnName="NOMBRE_ROL" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES_POR_PERSONAL">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.ROLES_POR_PERSONAL">
+        <MappingFragment StoreEntitySet="ROLES_POR_PERSONAL">
+          <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+          <ScalarProperty Name="ID_PERSONAL" ColumnName="ID_PERSONAL" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEDES">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.SEDE">
+        <MappingFragment StoreEntitySet="SEDES">
+          <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
+          <ScalarProperty Name="NOMBRE_SEDE" ColumnName="NOMBRE_SEDE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="CIUDAD_ID" ColumnName="CIUDAD_ID" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERVICIOS">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.SERVICIO">
+        <MappingFragment StoreEntitySet="SERVICIOS">
+          <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
+          <ScalarProperty Name="NOMBRE_SERVICIO" ColumnName="NOMBRE_SERVICIO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_CLIENTE">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.TIPO_CLIENTE">
+        <MappingFragment StoreEntitySet="TIPO_CLIENTE">
+          <ScalarProperty Name="ID_TIPO_CLIENTE" ColumnName="ID_TIPO_CLIENTE" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_HABITACION">
+      <EntityTypeMapping TypeName="DBHOTEL2Model2.TIPO_HABITACION">
+        <MappingFragment StoreEntitySet="TIPO_HABITACION">
+          <ScalarProperty Name="ID_TIPO_HABITACION" ColumnName="ID_TIPO_HABITACION" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
