@@ -25,8 +25,9 @@ namespace Servicios_18_20.Models
         public Nullable<int> ID_RESERVA { get; set; }
         public Nullable<int> ID_SEDE { get; set; }
         public Nullable<int> ID_CLIENTE { get; set; }
-        public Nullable<int> ID_MODO_PAGO { get; set; }
         public Nullable<System.DateTime> FECHA { get; set; }
+        public Nullable<int> ID_PERSONAL { get; set; }
+        public Nullable<int> ID_MODO_PAGO { get; set; }
         public Nullable<bool> ACTIVO { get; set; }
 
         [JsonIgnore]
@@ -41,6 +42,9 @@ namespace Servicios_18_20.Models
 
         [JsonIgnore]
         public virtual MODO_PAGO MODO_PAGO { get; set; }
+
+        [JsonIgnore]
+        public virtual PERSONAL PERSONAL { get; set; }
 
         [JsonIgnore]
         public virtual SEDE SEDE { get; set; }

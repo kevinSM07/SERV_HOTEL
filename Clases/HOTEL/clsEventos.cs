@@ -12,7 +12,7 @@ namespace Servicios_18_20.Clases.HOTEL
     {
 
         public EVENTO evento { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
 
         //Método consultar

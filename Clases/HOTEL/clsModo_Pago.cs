@@ -9,7 +9,7 @@ namespace Servicios_18_20.Clases.HOTEL
     public class clsModo_Pago
     {
         public MODO_PAGO modoPago { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
         public IQueryable ListarMetodoPago()
         {

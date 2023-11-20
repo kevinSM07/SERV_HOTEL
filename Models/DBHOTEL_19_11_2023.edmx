@@ -67,6 +67,8 @@
           <Property Name="ID_RESERVA" Type="int" />
           <Property Name="ID_SEDE" Type="int" />
           <Property Name="ID_CLIENTE" Type="int" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="ID_PERSONAL" Type="int" />
           <Property Name="ID_MODO_PAGO" Type="int" />
           <Property Name="ACTIVO" Type="bit" />
         </EntityType>
@@ -129,6 +131,7 @@
           <Property Name="ID_CLIENTE" Type="int" />
           <Property Name="NOMBRE" Type="varchar" MaxLength="60" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="20" />
+          <Property Name="CANTIDAD_C" Type="int" />
           <Property Name="ID_SEDE" Type="int" />
           <Property Name="NUMERO_HABITACION" Type="int" />
           <Property Name="ID_SERVICIO" Type="int" />
@@ -207,7 +210,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_F__ACTIV__6A30C649">
+        <Association Name="FK__DETALLE_F__ACTIV__6B24EA82">
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="0..1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +222,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_F__NUMER__6B24EA82">
+        <Association Name="FK__DETALLE_F__NUMER__6C190EBB">
           <End Role="HABITACIONES" Type="Self.HABITACIONES" Multiplicity="0..1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,7 +270,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FACTURA__ID_MODO__6754599E">
+        <Association Name="FK__FACTURA__ID_MODO__68487DD7">
           <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="0..1" />
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,6 +279,18 @@
             </Principal>
             <Dependent Role="FACTURA">
               <PropertyRef Name="ID_MODO_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACTURA__ID_PERS__6754599E">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="0..1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="ID_PERSONAL" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_PERSONAL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -470,11 +485,11 @@
             <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
             <End Role="CLIENTES" EntitySet="CLIENTES" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_F__ACTIV__6A30C649" Association="Self.FK__DETALLE_F__ACTIV__6A30C649">
+          <AssociationSet Name="FK__DETALLE_F__ACTIV__6B24EA82" Association="Self.FK__DETALLE_F__ACTIV__6B24EA82">
             <End Role="FACTURA" EntitySet="FACTURA" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_F__NUMER__6B24EA82" Association="Self.FK__DETALLE_F__NUMER__6B24EA82">
+          <AssociationSet Name="FK__DETALLE_F__NUMER__6C190EBB" Association="Self.FK__DETALLE_F__NUMER__6C190EBB">
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
@@ -490,8 +505,12 @@
             <End Role="CLIENTES" EntitySet="CLIENTES" />
             <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
-          <AssociationSet Name="FK__FACTURA__ID_MODO__6754599E" Association="Self.FK__FACTURA__ID_MODO__6754599E">
+          <AssociationSet Name="FK__FACTURA__ID_MODO__68487DD7" Association="Self.FK__FACTURA__ID_MODO__68487DD7">
             <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACTURA__ID_PERS__6754599E" Association="Self.FK__FACTURA__ID_PERS__6754599E">
+            <End Role="PERSONAL" EntitySet="PERSONAL" />
             <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
           <AssociationSet Name="FK__FACTURA__ID_SEDE__656C112C" Association="Self.FK__FACTURA__ID_SEDE__656C112C">
@@ -602,8 +621,8 @@
           <Property Name="NUMERO_HABITACION" Type="Int32" />
           <Property Name="PRECIO" Type="Double" />
           <Property Name="ACTIVO" Type="Boolean" />
-          <NavigationProperty Name="FACTURA" Relationship="Self.FK__DETALLE_F__ACTIV__6A30C649" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
-          <NavigationProperty Name="HABITACIONE" Relationship="Self.FK__DETALLE_F__NUMER__6B24EA82" FromRole="DETALLE_FACTURA" ToRole="HABITACIONES" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK__DETALLE_F__ACTIV__6B24EA82" FromRole="DETALLE_FACTURA" ToRole="FACTURA" />
+          <NavigationProperty Name="HABITACIONE" Relationship="Self.FK__DETALLE_F__NUMER__6C190EBB" FromRole="DETALLE_FACTURA" ToRole="HABITACIONES" />
         </EntityType>
         <EntityType Name="EVENTO">
           <Key>
@@ -627,12 +646,15 @@
           <Property Name="ID_RESERVA" Type="Int32" />
           <Property Name="ID_SEDE" Type="Int32" />
           <Property Name="ID_CLIENTE" Type="Int32" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="ID_PERSONAL" Type="Int32" />
           <Property Name="ID_MODO_PAGO" Type="Int32" />
           <Property Name="ACTIVO" Type="Boolean" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK__FACTURA__ID_CLIE__66603565" FromRole="FACTURA" ToRole="CLIENTES" />
-          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK__DETALLE_F__ACTIV__6A30C649" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK__DETALLE_F__ACTIV__6B24EA82" FromRole="FACTURA" ToRole="DETALLE_FACTURA" />
           <NavigationProperty Name="RESERVA" Relationship="Self.FK__FACTURA__ACTIVO__6477ECF3" FromRole="FACTURA" ToRole="RESERVAS" />
-          <NavigationProperty Name="MODO_PAGO" Relationship="Self.FK__FACTURA__ID_MODO__6754599E" FromRole="FACTURA" ToRole="MODO_PAGO" />
+          <NavigationProperty Name="MODO_PAGO" Relationship="Self.FK__FACTURA__ID_MODO__68487DD7" FromRole="FACTURA" ToRole="MODO_PAGO" />
+          <NavigationProperty Name="PERSONAL" Relationship="Self.FK__FACTURA__ID_PERS__6754599E" FromRole="FACTURA" ToRole="PERSONAL" />
           <NavigationProperty Name="SEDE" Relationship="Self.FK__FACTURA__ID_SEDE__656C112C" FromRole="FACTURA" ToRole="SEDES" />
         </EntityType>
         <EntityType Name="HABITACIONE">
@@ -645,7 +667,7 @@
           <Property Name="DISPONIBILIDAD" Type="Boolean" />
           <Property Name="ID_SERVICIOS_ADICIONALES" Type="Int32" />
           <Property Name="ACTIVO" Type="Boolean" />
-          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK__DETALLE_F__NUMER__6B24EA82" FromRole="HABITACIONES" ToRole="DETALLE_FACTURA" />
+          <NavigationProperty Name="DETALLE_FACTURA" Relationship="Self.FK__DETALLE_F__NUMER__6C190EBB" FromRole="HABITACIONES" ToRole="DETALLE_FACTURA" />
           <NavigationProperty Name="HABITACIONES_SERVICIOS" Relationship="Self.FK__HABITACIO__ACTIV__4222D4EF" FromRole="HABITACIONES" ToRole="HABITACIONES_SERVICIOS" />
           <NavigationProperty Name="TIPO_HABITACION" Relationship="Self.FK__HABITACIO__ID_TI__4316F928" FromRole="HABITACIONES" ToRole="TIPO_HABITACION" />
           <NavigationProperty Name="RESERVAS" Relationship="Self.FK__RESERVAS__NUMERO__5BE2A6F2" FromRole="HABITACIONES" ToRole="RESERVAS" />
@@ -668,7 +690,7 @@
           <Property Name="ID_MODO_PAGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="METODO_PAGO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ACTIVO" Type="Boolean" />
-          <NavigationProperty Name="FACTURAs" Relationship="Self.FK__FACTURA__ID_MODO__6754599E" FromRole="MODO_PAGO" ToRole="FACTURA" />
+          <NavigationProperty Name="FACTURAs" Relationship="Self.FK__FACTURA__ID_MODO__68487DD7" FromRole="MODO_PAGO" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="PERSONAL">
           <Key>
@@ -682,6 +704,7 @@
           <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ID_SEDE" Type="Int32" />
           <Property Name="ACTIVO" Type="Boolean" />
+          <NavigationProperty Name="FACTURAs" Relationship="Self.FK__FACTURA__ID_PERS__6754599E" FromRole="PERSONAL" ToRole="FACTURA" />
           <NavigationProperty Name="SEDE" Relationship="Self.FK__PERSONAL__ACTIVO__4CA06362" FromRole="PERSONAL" ToRole="SEDES" />
           <NavigationProperty Name="ROLES_POR_PERSONAL" Relationship="Self.FK__ROLES_POR__ACTIV__4F7CD00D" FromRole="PERSONAL" ToRole="ROLES_POR_PERSONAL" />
         </EntityType>
@@ -703,6 +726,7 @@
           <Property Name="ID_CLIENTE" Type="Int32" />
           <Property Name="NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD_C" Type="Int32" />
           <Property Name="ID_SEDE" Type="Int32" />
           <Property Name="NUMERO_HABITACION" Type="Int32" />
           <Property Name="ID_SERVICIO" Type="Int32" />
@@ -848,7 +872,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_F__ACTIV__6A30C649">
+        <Association Name="FK__DETALLE_F__ACTIV__6B24EA82">
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="0..1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -860,7 +884,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_F__NUMER__6B24EA82">
+        <Association Name="FK__DETALLE_F__NUMER__6C190EBB">
           <End Role="HABITACIONES" Type="Self.HABITACIONE" Multiplicity="0..1" />
           <End Role="DETALLE_FACTURA" Type="Self.DETALLE_FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -908,7 +932,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FACTURA__ID_MODO__6754599E">
+        <Association Name="FK__FACTURA__ID_MODO__68487DD7">
           <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="0..1" />
           <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -917,6 +941,18 @@
             </Principal>
             <Dependent Role="FACTURA">
               <PropertyRef Name="ID_MODO_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FACTURA__ID_PERS__6754599E">
+          <End Role="PERSONAL" Type="Self.PERSONAL" Multiplicity="0..1" />
+          <End Role="FACTURA" Type="Self.FACTURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAL">
+              <PropertyRef Name="ID_PERSONAL" />
+            </Principal>
+            <Dependent Role="FACTURA">
+              <PropertyRef Name="ID_PERSONAL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1040,7 +1076,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBHOTELEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBHOTELEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CANCELACIONES" EntityType="Self.CANCELACIONE" />
           <EntitySet Name="CIUDADES" EntityType="Self.CIUDADE" />
           <EntitySet Name="CLIENTES" EntityType="Self.CLIENTE" />
@@ -1079,11 +1115,11 @@
             <End Role="CLIENTES" EntitySet="CLIENTES" />
             <End Role="RESERVAS" EntitySet="RESERVAS" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_F__ACTIV__6A30C649" Association="Self.FK__DETALLE_F__ACTIV__6A30C649">
+          <AssociationSet Name="FK__DETALLE_F__ACTIV__6B24EA82" Association="Self.FK__DETALLE_F__ACTIV__6B24EA82">
             <End Role="FACTURA" EntitySet="FACTURAs" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_F__NUMER__6B24EA82" Association="Self.FK__DETALLE_F__NUMER__6B24EA82">
+          <AssociationSet Name="FK__DETALLE_F__NUMER__6C190EBB" Association="Self.FK__DETALLE_F__NUMER__6C190EBB">
             <End Role="HABITACIONES" EntitySet="HABITACIONES" />
             <End Role="DETALLE_FACTURA" EntitySet="DETALLE_FACTURA" />
           </AssociationSet>
@@ -1099,8 +1135,12 @@
             <End Role="RESERVAS" EntitySet="RESERVAS" />
             <End Role="FACTURA" EntitySet="FACTURAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__FACTURA__ID_MODO__6754599E" Association="Self.FK__FACTURA__ID_MODO__6754599E">
+          <AssociationSet Name="FK__FACTURA__ID_MODO__68487DD7" Association="Self.FK__FACTURA__ID_MODO__68487DD7">
             <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
+            <End Role="FACTURA" EntitySet="FACTURAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACTURA__ID_PERS__6754599E" Association="Self.FK__FACTURA__ID_PERS__6754599E">
+            <End Role="PERSONAL" EntitySet="PERSONALs" />
             <End Role="FACTURA" EntitySet="FACTURAs" />
           </AssociationSet>
           <AssociationSet Name="FK__FACTURA__ID_SEDE__656C112C" Association="Self.FK__FACTURA__ID_SEDE__656C112C">
@@ -1149,7 +1189,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBHOTELModelStoreContainer" CdmEntityContainer="DBHOTELEntities3">
+        <EntityContainerMapping StorageEntityContainer="DBHOTELModelStoreContainer" CdmEntityContainer="DBHOTELEntities4">
           <EntitySetMapping Name="CANCELACIONES">
             <EntityTypeMapping TypeName="DBHOTELModel.CANCELACIONE">
               <MappingFragment StoreEntitySet="CANCELACIONES">
@@ -1216,6 +1256,8 @@
                 <ScalarProperty Name="ID_RESERVA" ColumnName="ID_RESERVA" />
                 <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
                 <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ID_PERSONAL" ColumnName="ID_PERSONAL" />
                 <ScalarProperty Name="ID_MODO_PAGO" ColumnName="ID_MODO_PAGO" />
                 <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
               </MappingFragment>
@@ -1284,6 +1326,7 @@
                 <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CANTIDAD_C" ColumnName="CANTIDAD_C" />
                 <ScalarProperty Name="ID_SEDE" ColumnName="ID_SEDE" />
                 <ScalarProperty Name="NUMERO_HABITACION" ColumnName="NUMERO_HABITACION" />
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />

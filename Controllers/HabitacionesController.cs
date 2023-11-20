@@ -14,16 +14,22 @@ namespace Servicios_18_20.Controllers
     [EnableCors(origins: "http://localhost:53462", headers: "*", methods: "*")]
     public class HabitacionesController : ApiController
     {
-        public List<HABITACIONE> Get()
+        public IQueryable Get()
         {
-            clsHabitaciones _habitaciones = new clsHabitaciones();
-            return _habitaciones.ListarHabitaciones();
+            clsHabitaciones habitaciones = new clsHabitaciones();
+            return habitaciones.ListarXHabitacioneo();
         }
 
-        public HABITACIONE Get(int idHabitacion)
+        public IQueryable Get(int tipoHabitacion)
+        {
+            clsHabitaciones habitaciones = new clsHabitaciones();
+            return habitaciones.ConsultarXTipoHabitacion(tipoHabitacion);
+        }
+
+        public HABITACIONE Get(int idHabitacion, string nada)
         {
             clsHabitaciones _habitaciones = new clsHabitaciones();
-            return _habitaciones.Consultar(idHabitacion);
+            return _habitaciones.Consultar(idHabitacion, nada);
         }
         public string Post([FromBody] HABITACIONE habitaciones)
         {

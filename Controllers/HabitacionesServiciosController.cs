@@ -19,5 +19,12 @@ namespace Servicios_18_20.Controllers
             clsHabitaciones_Servicios _ServiciosADD = new clsHabitaciones_Servicios();
             return _ServiciosADD.ListarServiciosADD();
         }
+
+        public HABITACIONES_SERVICIOS Get(int idServiciosAdicionales)
+        {
+            clsHabitaciones_Servicios _serviciosAdicionales = new clsHabitaciones_Servicios();
+            return _serviciosAdicionales.Consultar(idServiciosAdicionales);
+        }
+
     }
 }

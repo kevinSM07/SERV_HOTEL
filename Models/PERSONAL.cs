@@ -18,6 +18,7 @@ namespace Servicios_18_20.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PERSONAL()
         {
+            this.FACTURAs = new HashSet<FACTURA>();
             this.ROLES_POR_PERSONAL = new HashSet<ROLES_POR_PERSONAL>();
         }
     
@@ -29,6 +30,10 @@ namespace Servicios_18_20.Models
         public string CORREO_ELECTRONICO { get; set; }
         public Nullable<int> ID_SEDE { get; set; }
         public Nullable<bool> ACTIVO { get; set; }
+
+        [JsonIgnore]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FACTURA> FACTURAs { get; set; }
 
         [JsonIgnore]
         public virtual SEDE SEDE { get; set; }

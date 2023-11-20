@@ -29,6 +29,7 @@ namespace Servicios_18_20.Models
         public Nullable<int> ID_SERVICIOS_ADICIONALES { get; set; }
         public Nullable<bool> ACTIVO { get; set; }
 
+
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }

@@ -10,7 +10,7 @@ namespace Servicios_18_20.Clases.HOTEL
     {
 
         public TIPO_HABITACION TipoHabitacion { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
 
         public List<TIPO_HABITACION> ListarTipoHabitaciones()

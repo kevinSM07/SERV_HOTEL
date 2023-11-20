@@ -12,7 +12,7 @@ namespace Servicios_18_20.Clases.HOTEL
     {
 
         public CIUDADE ciudad { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
         public IQueryable ListarCiudades()
         {

@@ -9,7 +9,7 @@ namespace Servicios_18_20.Clases
     public class clsReservas
     {
         public RESERVA reservas { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
         //public IQueryable ConsultarReservas()
         //{

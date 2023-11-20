@@ -25,7 +25,6 @@ namespace Servicios_18_20.Models
         public string NOMBRE { get; set; }
         public Nullable<bool> ACTIVO { get; set; }
 
-
         [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTES { get; set; }

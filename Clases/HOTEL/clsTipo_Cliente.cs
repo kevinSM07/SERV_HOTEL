@@ -10,7 +10,7 @@ namespace Servicios_18_20.Clases.HOTEL
     public class clsTipo_Cliente
     {
         public TIPO_CLIENTE TIPO_CLIENTE { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
         public List<TIPO_CLIENTE> ListarTipoCliente()
         {
             return DBHotel.TIPO_CLIENTE

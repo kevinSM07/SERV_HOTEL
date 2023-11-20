@@ -9,20 +9,43 @@ namespace Servicios_18_20.Clases.HOTEL
     public class clsHabitaciones
     {
         public HABITACIONE habitaciones { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
-        public List<HABITACIONE> ListarHabitaciones()
+        public IQueryable ListarXHabitacioneo()
         {
-            return DBHotel.HABITACIONES
-                          .Where(t => t.ACTIVO == true)
-                          .OrderBy(t => t.NUMERO_HABITACION)
-                          .ToList();
+            return from HB in DBHotel.Set<HABITACIONE>()
+                   join TH in DBHotel.Set<TIPO_HABITACION>()
+                   on HB.ID_TIPO_HABITACION equals TH.ID_TIPO_HABITACION
+                   join SAD in DBHotel.Set<HABITACIONES_SERVICIOS>()
+                   on HB.ID_SERVICIOS_ADICIONALES equals SAD.ID_HABITACIONES_SERVICIOS
+                   orderby (HB.ACTIVO)
+                   select new
+                   {
+                       NUMERO_HABITACION = HB.NUMERO_HABITACION,
+                       TIPO = TH.TIPO,
+                       TARIFA_NOCHE = HB.TARIFA_NOCHE,
+                       NOMBRE_SERVICIO_AD = SAD.NOMBRE_SERVICIO_AD,
+                       PRECIO_SAD = SAD.PRECIO,
+                       ACTIVO = HB.ACTIVO
+                   };
         }
 
+        public IQueryable ConsultarXTipoHabitacion(int TipoHabitacion)
+        {
+            return from HB in DBHotel.Set<HABITACIONE>()
+                   where HB.ID_TIPO_HABITACION == TipoHabitacion
+                   select new
+                   {
+                       NUMERO_HABITACION = HB.NUMERO_HABITACION,
+                   };
+        }
+
+
         //Método consultar
-        public HABITACIONE Consultar(int idHabitacion)
+        public HABITACIONE Consultar(int idHabitacion, string nada)
         {
             return DBHotel.HABITACIONES.FirstOrDefault(t => t.NUMERO_HABITACION == idHabitacion);
+            var Nada = nada;
         }
         //Método de insertar
         public string Insertar()

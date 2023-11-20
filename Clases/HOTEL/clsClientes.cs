@@ -11,7 +11,7 @@ namespace Servicios_18_20.Clases.HOTEL
         // using Newtonsoft.Json;
         // [JsonIgnore]
         public CLIENTE cliente { get; set; }
-        private DBHOTELEntities3 DBHotel = new DBHOTELEntities3();
+        private DBHOTELEntities4 DBHotel = new DBHOTELEntities4();
 
         public List<CLIENTE> ListarClientes()
         {

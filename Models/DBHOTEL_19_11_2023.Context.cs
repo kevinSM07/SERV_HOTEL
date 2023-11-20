@@ -13,10 +13,10 @@ namespace Servicios_18_20.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBHOTELEntities3 : DbContext
+    public partial class DBHOTELEntities4 : DbContext
     {
-        public DBHOTELEntities3()
-            : base("name=DBHOTELEntities3")
+        public DBHOTELEntities4()
+            : base("name=DBHOTELEntities4")
         {
         }
     
