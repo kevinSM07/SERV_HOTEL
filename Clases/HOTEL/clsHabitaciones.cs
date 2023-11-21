@@ -36,7 +36,8 @@ namespace Servicios_18_20.Clases.HOTEL
                    where HB.ID_TIPO_HABITACION == TipoHabitacion
                    select new
                    {
-                       NUMERO_HABITACION = HB.NUMERO_HABITACION,
+                       NUMERO_HABITACION = HB.NUMERO_HABITACION + "|" + HB.TARIFA_NOCHE,
+                       Tipo = HB.TIPO_HABITACION
                    };
         }
 
